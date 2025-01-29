@@ -1,0 +1,9 @@
+body {
+    background-color: white;
+}
+#seçao {
+    background-color: white;
+    width: 300px;
+    height: 500px;
+    border: black solid 3px;
+}

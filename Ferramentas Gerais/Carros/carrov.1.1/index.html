@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+    <section>
+        <div class="informations">
+            <h1>Compra de Carros</h1>
+            <p>Escolha um Carro</p>
+            <select name="carro" id="carro">
+                <option value="Volvo">R$229.950 Volvo</option>
+                <option value="McLaren Senna">R$ 12.000.000 McLaren Senna</option>
+                <option value="Audi GT">R$769.000 Audi GT</option>
+            </select>
+            <p>Quer um bodykit?</p>
+            <select name="bodykit" id="bodykit">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select>
+            <input type="button" value="Encomendar" onclick="encomendar()" id="encomendar">
+        </div>
+        <div class="res" id="res">
+            <!-- Resultado será exibido aqui -->
+        </div>
+    </section>
+    <script>
+        function encomendar() {
+            // Obter o carro selecionado
+            const carro = document.getElementById('carro').value;
+            // Obter a opção de bodykit
+            const bodykit = document.getElementById('bodykit').value;
+            // Construir a mensagem
+            const mensagem = `Seu ${carro} ${bodykit === 'sim' ? 'com' : 'sem'} bodykit está a caminho!`;
+            // Exibir a mensagem na div de resultado
+            document.getElementById('res').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>

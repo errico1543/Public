@@ -1,0 +1,28 @@
+body {
+    background-color: #9ccfff
+}
+section {
+    background-color: white;
+    border-radius: 5px;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.454);
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    text-align: center;
+}
+#encomendar {
+    transition: all 0.3s ease;
+}
+#encomendar:hover {
+    transform: translateY(-3px);
+}
+#carro {
+    transition: all 0.3s ease;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+#carro:hover {
+    transform: translateY(-3px);
+}

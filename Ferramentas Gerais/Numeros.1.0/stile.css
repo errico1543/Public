@@ -1,0 +1,59 @@
+body {
+    background: linear-gradient(to bottom, #454752, #343541);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 100;
+    margin: 0;
+    height: 100vh;
+}
+section {
+    background-color: #343541;
+    color: white;
+    border-radius: 5px;
+    width: 300px;
+    height: 400px;
+    margin: auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    text-justify: lighter;
+}
+h1 {
+    font-weight: 100;
+}
+.checarpalpite1 {
+    transition: all 0.3s ease;
+    background-color: #585861;
+    border-radius: 10px;
+    color: white;
+    border: #343541 solid 2px;
+    cursor: pointer;
+}
+.checarpalpite2 {
+    transition: all 0.3s ease;
+    background-color: #454654;
+    color: white;
+    text-align: center;
+}
+.checarpalpite3::placeholder {
+    color: rgba(205, 205, 205, 0.752);
+}
+.checarpalpite3 {
+    background-color: #585861;
+    border-radius: 10px;
+    color: white;
+    border: #343541 solid 2px;
+    cursor: pointer;
+}
+.checarpalpite1:hover {
+    transform: translateY(-3px);
+    color: black;
+    background-color: white;
+}
+#carro {
+    transition: all 0.3s ease;
+    border: 2px black solid;
+    border-radius: 5px;
+}
+#carro:hover {
+    transform: translateY(-3px);
+}

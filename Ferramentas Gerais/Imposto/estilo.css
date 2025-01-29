@@ -1,0 +1,37 @@
+body {
+    background-color: rgb(7, 128, 234);
+    color: white;
+    text-align: center;
+}
+#seçao {
+    background-color: white;
+    text-align: left;
+    color: black;
+    margin: auto;
+    border: black solid 3px;
+    border-radius: 20px;
+    box-shadow: 2px 5px 5px black;
+    width: 300px;
+    height: 300px;
+    padding-top: 10px;
+    padding-left: 10px;
+}
+#calcular {
+    background-color: rgb(7, 128, 234);
+    border-radius: 15px;
+    color: white;
+}
+.division {
+    background-color: black;
+    height: 1px;
+    width: 250px;
+    position: absolute;
+    top: 50px;
+}
+.division2 {
+    background-color: black;
+    height: 1px;
+    width: 250px;
+    position: absolute;
+    top: 135px;
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imposto</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body onload="window.alert('Por favor não digite um $ no custo do produto!')">
+    <header>
+
+    </header>
+    <section id="seçao">
+        <h1>Sistemas de Impostos</h1>
+        <div id="import">
+            <p>Custo do produto</p><input type="number" name="custo" id="custo" placeholder="Insira o Custo do produto">
+            <input type="button" name="calcular" id="calcular" value="Calcular" onclick="calcular()">
+
+        </div>
+        <p class="division"></p>
+        <p class="division2"></p>
+        <h1>Resposta</h1>
+        <div id="res">
+            
+        </div>
+    </section>
+    <footer>
+
+    </footer>
+    <script>
+        function calcular() {
+            var custo = parseFloat(document.getElementById('custo').value)
+            var imposto = 0.2;
+            var finalvalue;
+            if (custo >= 50) {
+                finalvalue = custo + custo * imposto;
+                res.innerHTML= `o valor sem taxação é ${custo}, e com taxação é ${finalvalue}`  
+            } 
+            if (isNaN(custo) || custo <= 0) {
+                window.alert("[ERRO] Por favor digite um Valor Compativel")
+            } else if (custo < 50) {
+                res.innerHTML= `o valor é abaixo de R$50, não será taxado`
+            }
+    }
+    </script>
+</body>
+</html>

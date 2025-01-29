@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+    <section>
+        <div class="informations">
+            <h1>Compra de Carros</h1>
+            <p>Escolha um Carro</p>
+            <select name="carro" id="carro">
+                <option value="Volvo">Volvo</option>
+                <option value="McLaren Senna">McLaren Senna</option>
+                <option value="Audi GT">Audi GT</option>
+            </select>
+                <p>Quer um bodykit?</p>
+                <select name="bodykit" id="bodykit">
+                    <option value="sim">Sim</option>
+                    <option value="nao">Não</option>
+                </select>
+                <input type="button" value="Encomendar" onclick="encomendar()">
+        </div>
+        <div class="res">
+            
+        </div>
+    </section>
+    <script>
+        function encomendar() {
+            let carro = document.getElementById('carro').value;
+            let bodykit = document.getElementById('bodykit').value;
+            let mensagem = `Seu ${carro} ${bodykit === 'sim' ? 'com' : 'sem'} bodykit está a caminho.`;
+            document.getElementById('res').innerText = mensagem;
+        }
+    </script>
+</body>
+</html>

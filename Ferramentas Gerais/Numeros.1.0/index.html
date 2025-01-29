@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carros</title>
+    <link rel="stylesheet" href="stile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swapwght@100&display=swap" rel="stylesheet">
+
+</head>
+<body id="body1">
+    <section>
+        <div class="informations">
+            <h1>Adivinhe o número</h1>
+            <input type="number" placeholder="Insira o número aqui" id="number1" style="font-family: 'Poppins', sans-serif;" class="checarpalpite3">
+            <p id="message"></p>
+            <input type="button" value="Checar" onclick="checarpalpite()" id="checarpalpite1" style="font-family: 'Poppins', sans-serif;" class="checarpalpite1">
+            <input type="button" value="Restart" onclick="restart()" id="restart1" style="font-family: 'Poppins', sans-serif;" class="checarpalpite1">
+            <input type="button" value="dica" onclick="dica()" style="font-family: 'Poppins', sans-serif;" class="checarpalpite1">
+        </div>
+        <div class="res" id="res">
+
+        </div>
+        
+        
+    
+    </section>
+    <p class="checarpalpite2">© - 23 - 01 - 2025</p>
+    <script>
+        let randomnumber = Math.floor(Math.random() * 100) + 1;
+
+        function checarpalpite() {
+            var userguess = Number(document.getElementById("number1").value);
+            var message = document.getElementById("message");
+
+            if (userguess < randomnumber) {
+                message.textContent = "Maior.";
+            } else if (userguess > randomnumber) {
+                message.textContent = "Menor.";
+            } else if (userguess === randomnumber) {
+                message.textContent = "✔ Correct";
+            }
+        
+       
+        }
+        function dica() {
+            if (randomnumber > 50) {
+                message.textContent = "O número sorteado é maior que 50."
+            } else if (randomnumber < 50) {
+                message.textContent = "O número sorteado é menor que 50. "
+            } else if (randomnumber === 50) {
+                message.textContent = "O número sorteado esta perto de 50."
+            }
+        }
+        function restart() {
+            randomnumber = Math.floor(Math.random() * 100) + 1;
+            document.getElementById("number1").value = "";
+            document.getElementById("message").textContent = "the game has restarted;"
+        }
+        function darkmode() {
+            var caixa = document.getElementById("body1")
+            const dark = "#121212"
+            caixa.style.backgroundColor = dark
+
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transit sistem</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header id="header">
+        <h1>Sistemas de transito</h1>
+    </header>
+    <section id="secao">
+        <div id="multsistem">
+            <!--Sistema de multas-->
+    <h1>Sistema de Multas</h1>
+    Velocidade do carro <input type="number" name="txtvel" id="txtvel">
+    <input type="button" value="Verificar" onclick="calcular()" id="verify">
+    <script>
+        //Sistema de multas
+        function calcular() {
+            var txtv = window.document.querySelector('input#txtvel')
+            var res= window.document.querySelector('div#res')
+            var vel = Number(txtv.value)
+            res.innerHTML = `<p>Sua velocidade atual é de <strong>${vel}KM/h</strong><p>`
+            if (vel > 60) {
+                res.innerHTML += `<p>Voce esta <strong>multado</strong> por excesso de velocidade</p>`
+            } else if (vel > 450) {
+                res.innerHTML = `<p> Pare de andar na velocidade do som!</p>`
+            }
+            res.innerHTML += `<p>Dirija sempre com cinto de segurança</p>`
+        }
+    </script>
+        </div>
+        <div id="emerngsistem">
+            <!--Sistema de emergencia-->
+    <h1>Sistema de emergencias de transito</h1>
+    Tipo de emergencia <input type="text" name="emergencia" id="emergency">
+    <input type="button" value="Verificar" id="verify" onclick="emergency()">
+    <!--final do sistema de emergencia-->
+
+        </div>
+        <h1>Respostas</h1>
+        <div id="res">
+            <p id="txt1">As respostas aparecerão aqui...</p>
+        </div>
+        <div id="comandos">
+            <h3>Comandos</h3>
+            <p>colisao entre veiculos</p>
+            <p>carro preso/atolado</p>
+            <p>motor fundido</p>
+        </div>
+    </section>
+    <footer id="footer">
+        <h1>©® - 2025.</h1>
+    </footer>
+    <script>
+        //Sistema de emergencia
+        function emergency() {
+            var emergencia = document.getElementById('emergency').value;
+            var res = document.getElementById('res');
+
+            if (emergencia == "") {
+                window.alert("[ERRO] Por favor digite algo na caixa de emergências")
+                
+            } else if (emergencia === "colisao entre veiculos")  {
+                res.innerHTML = `<p>A ambulancia esta a caminho!</p>`
+
+            } else if (emergencia === "carro preso/atolado") {
+                res.innerHTML = `<p>Um guincho esta á caminho!</p>`
+
+            } else if (emergencia == "motor fundido") {
+                res.innerHTML = `<p>Um guincho esta á caminho!</p>`
+            } else {
+                window.alert("[ERRO] Não foi possivel reconhecer a emergencia ")
+            }
+            
+        }
+        
+        
+    </script>
+</body>
+</html>
