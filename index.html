@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+         :root{
+            --color-dark: rgb(14, 14, 14);
+            --color-dark2: rgb(40, 41, 42);
+            --color-fontColor: rgb(169, 166, 169);
+            --color-light: rgb(255, 255, 255);
+            --color-primary: rgb(72, 79, 82);
+            --color-secondary: rgb(58, 60, 63);
+            --color-hover: rgb(96, 105, 112);
+            --color-blue: rgb(82, 209, 255);
+            font-family: 'Poppins', sans-serif;
+        }
+         body {
+            background-color: var(--color-dark2);
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4rem;
+
+        }
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3em;
+            color: rgb(210, 24, 24);
+            margin: 0;
+            font-weight: 200;
+        }
+        h2 {
+            margin: 0;
+            color: rgba(92, 92, 92, 0.704);
+            font-weight: 900;
+        }
+        #content {
+            background-color: rgb(49, 50, 52);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 500px;
+            border-radius: 100px;
+            border: rgb(58, 60, 63) 2px solid;
+            padding: 10px;
+        }
+        .buttons {
+            background-color: var(--color-primary);
+            color: var(--color-fontColor);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            margin: 5px;
+            border: 0;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .buttons:hover {
+            background-color: var(--color-hover);
+            transform: scale(1.05);
+        }
+        .buttons:active {
+            background-color: rgb(44, 48, 52);
+            transform: scale(0.95);
+        }
+        .inputs {
+            background-color: var(--color-dark2);
+            border: 0px;
+            border-radius: 50px;
+            color: white;
+            margin: 3px;
+            padding: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body class="BODY">
+    <h1>Plaza</h1>
+    <h2 style="font-weight: 500;">Register</h2>
+    <div id="content">
+        <!--inputs-->
+        <!--input Name-->
+    <input type="text" id="name" placeholder="Enter Name" class="inputs">
+        <!--input Age-->
+    <input type="number" name="" id="age" placeholder="Enter age" class="inputs">
+        <!--input ID-->
+    <input type="text" id="id" placeholder="Enter ID (only if you delete it)" class="inputs">
+        <!--input Description-->
+    <input type="text" name="" id="description" class="inputs" placeholder="Enter Description">
+    <!--buttons: register - show data base - delete User-->
+    <button id="register" value="register" onclick="register(), cleanInputs()" class="buttons">register 📝 </button>
+    <button id="display" onclick="showDatabase()" class="buttons">mostrar database 📝 </button>
+    <button id="delete" class="buttons" onclick="deleteUser(), cleanInputs()">deleteUser 🗑</button>
+</div>
+<div id="BancoDeDados"></div>
+</body>
+<script>
+    function register() {
+        const name = document.getElementById("name").value.toString();
+        const age = document.getElementById("age").value;
+        const description = document.getElementById("description").value;
+        fetch('http://localhost:3000/users', {
+            method: 'POST', 
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                name:name, age:age, Description:description,
+            })
+        })
+        .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+    }
+
+    function showDatabase() {
+        fetch('http://localhost:3000/users', {
+            method: 'GET', 
+            headers: {
+                'Content-Type':'application/json'
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('BancoDeDados');
+            container.innerHTML= "";
+            data.forEach(user => {
+                // Cria uma div para cada usuário
+                const userDiv = document.createElement("div");
+                userDiv.style.border = "0px solid rgb(82, 209, 255)";
+                userDiv.style.margin = "5px";
+                userDiv.style.padding = "10px";
+                userDiv.style.borderRadius = "50px";
+                userDiv.style.color = "rgb(200, 200, 200)";
+                userDiv.style.fontFamily = 'Poppins, sans-serif';
+                userDiv.style.fontSize = '24px';
+                userDiv.style.fontWeight = '300';
+                userDiv.style.backgroundColor = 'rgb(58, 60, 63)';
+                userDiv.style.padding = '20px';
+                userDiv.style.display = 'block';
+                userDiv.style.width = '100%';
+                userDiv.style.textAlign = 'left';
+
+                // Adiciona o nome e a idade
+                userDiv.innerHTML = `
+                 <p><strong style="color: rgb(82, 209, 255);">Name</strong>: ${user.name}</p>
+                 <p><strong style="color: rgb(227, 227, 227); font-weight: 500;">Age</strong>: ${user.age}</p>
+                 <p><strong style="color: rgb(227, 227, 227); font-weight: 500;">Id</strong>: ${user._id}</p>
+                 <p><strong style="color: rgb(227, 227, 227); font-weight: 500;">Created</strong> at: ${user.createdAt}</p>
+                 <p><strong style="color: rgb(227, 227, 2277); font-weight: 500;">Description</strong>: ${user.Description}</p>
+                `;
+
+                // Adiciona a div ao contêiner
+                container.appendChild(userDiv);
+            });
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function deleteUser() {
+  const userId = document.getElementById("id").value; // Pegue o ID do usuário do input
+
+  fetch(`http://localhost:3000/users/${userId}`, {
+    method: 'DELETE', // Usando DELETE
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to delete user");
+      }
+    })
+    .then(data => {
+      console.log(data.message); // Mensagem de sucesso
+      alert(data.message);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert("Error deleting user");
+    });
+}
+    function cleanInputs() {
+        document.getElementById("name").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("id").value = "";
+        document.getElementById("description").value = "";
+    }
+</script>
+</html>
